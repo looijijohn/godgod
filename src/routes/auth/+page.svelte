@@ -140,13 +140,13 @@
 	<div class="w-full h-full absolute top-0 left-0 bg-white dark:bg-black"></div>
 
 	{#if loaded}
-		<div class="fixed m-10 z-50">
+		<div class="top-28 fixed bg-transparent w-full flex justify-center">
 			<div class="flex space-x-2">
 				<div class=" self-center">
 					<img
 						crossorigin="anonymous"
 						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class=" w-6 rounded-full"
+						class="w-60 rounded-full"
 						alt="logo"
 					/>
 				</div>
