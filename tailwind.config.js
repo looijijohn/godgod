@@ -7,6 +7,9 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
+			top: {
+				'28': '7rem', // Add a custom top value
+			  },
 			colors: {
 				gray: {
 					50: 'var(--color-gray-50, #f9f9f9)',
