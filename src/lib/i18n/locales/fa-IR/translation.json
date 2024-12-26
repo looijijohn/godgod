@@ -1123,7 +1123,7 @@
 	"Showcased creativity": "ایده\u200cآفرینی",
 	"Sign in": "ورود",
 	"Sign in to {{WEBUI_NAME}}": "ورود به چت‌بات هدهد",
-	"Sign in to {{WEBUI_NAME}} with LDAP": "ورود به چت‌بات هدهد با LDAP",
+	"Sign in to {{WEBUI_NAME}} with LDAP": "ورود به چت‌بات هدهد با شبکه",
 	"Sign Out": "خروج",
 	"Sign up": "ثبت نام",
 	"Sign up to {{WEBUI_NAME}}": "ثبت نام در {{WEBUI_NAME}}",
