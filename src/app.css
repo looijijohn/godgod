@@ -438,3 +438,17 @@ input[type='number'] {
 .tiptap tr {
 	@apply bg-white dark:bg-gray-900 dark:border-gray-850 text-xs;
 }
+
+
+
+/* my custom css */
+@media (min-width: 640px) {
+    .sm\:txxxxxxxxxxxx14 {
+        font-size: 2.25rem;
+        line-height: 3.5rem;
+    }
+}
+.txxxxxxxxxxxx14 {  
+    font-size: 1.875rem;
+    line-height: 3.25rem;
+}
