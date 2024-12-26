@@ -303,3 +303,17 @@ input[type='number'] {
 .hljs-strong {
 	font-weight: 700;
 }
+
+
+
+/* my custom css */
+@media (min-width: 640px) {
+    .sm\:txxxxxxxxxxxx14 {
+        font-size: 2.25rem;
+        line-height: 3.5rem;
+    }
+}
+.txxxxxxxxxxxx14 {  
+    font-size: 1.875rem;
+    line-height: 3.25rem;
+}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { WEBUI_BASE_URL } from '$lib/constants';
 
-	export let className = 'size-8';
+	export let className = 'size-14';
 	export let src = `${WEBUI_BASE_URL}/static/favicon.png`;
 </script>
 
