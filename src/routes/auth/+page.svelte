@@ -136,7 +136,7 @@
 	}}
 />
 
-<div class="w-full h-screen max-h-[100dvh] text-white relative">
+<div class="w-full h-screen max-h-[100dvh] text-white relative" style="direction: rtl;">
 	<div class="w-full h-full absolute top-0 left-0 bg-white dark:bg-black"></div>
 
 	{#if loaded}
@@ -191,7 +191,8 @@
 								submitHandler();
 							}}
 						>
-							<div class="mb-1">
+							<div class="mb-1 flex justify-between">
+
 								<div class=" text-2xl font-medium">
 									{#if $config?.onboarding ?? false}
 										{$i18n.t(`Get started with {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
@@ -203,6 +204,24 @@
 										{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
 									{/if}
 								</div>
+								{#if mode === 'ldap'}
+								<div class="relative inline group">
+									<!-- Info Button -->
+									<button
+										class="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+									>
+										<span class="text-xs font-bold">i</span>
+									</button>
+
+									<!-- Explanation Text (Hidden by Default) -->
+									<div
+										class="absolute hidden group-hover:block bg-white text-black text-sm p-3 border border-gray-300 rounded-lg shadow-md w-48 mt-2 left-1/2 transform -translate-x-1/2"
+									>
+										شناسه کاربری و کلمه عبور شما همان اطلاعات ورود به ویندوز شبکه داخلی می باشد
+										(active directory)
+									</div>
+								</div>
+							{/if}
 
 								{#if $config?.onboarding ?? false}
 									<div class=" mt-1 text-xs font-medium text-gray-500">
@@ -232,7 +251,7 @@
 
 									{#if mode === 'ldap'}
 										<div class="mb-2">
-											<div class=" text-sm font-medium text-left mb-1">{$i18n.t('Username')}</div>
+											<div class=" text-sm font-medium text-right mb-1">{$i18n.t('Username')}</div>
 											<input
 												bind:value={ldapUsername}
 												type="text"
@@ -245,7 +264,7 @@
 										</div>
 									{:else}
 										<div class="mb-2">
-											<div class=" text-sm font-medium text-left mb-1">{$i18n.t('Email')}</div>
+											<div class=" text-sm font-medium text-right mb-1">{$i18n.t('Email')}</div>
 											<input
 												bind:value={email}
 												type="email"
@@ -259,7 +278,7 @@
 									{/if}
 
 									<div>
-										<div class=" text-sm font-medium text-left mb-1">{$i18n.t('Password')}</div>
+										<div class=" text-sm font-medium text-right mb-1">{$i18n.t('Password')}</div>
 
 										<input
 											bind:value={password}
