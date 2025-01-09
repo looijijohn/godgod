@@ -228,7 +228,7 @@
 								submitHandler();
 							}}
 						>
-							<div class="mb-1 flex justify-between">
+							<div class="mb-1 flex gap-4">
 
 								<div class=" text-2xl font-medium">
 									{#if $config?.onboarding ?? false}
