@@ -7,6 +7,7 @@
 		chatId,
 		mobile,
 		settings,
+		models,
 		showArchivedChats,
 		showControls,
 		showSidebar,
@@ -26,8 +27,21 @@
 	import AdjustmentsHorizontal from '../icons/AdjustmentsHorizontal.svelte';
 
 	import PencilSquare from '../icons/PencilSquare.svelte';
+	import { updateUserSettings } from '$lib/apis/users';
+	import { getModels as _getModels } from '$lib/apis';
 
 	const i18n = getContext('i18n');
+	let chatDirection: 'LTR' | 'RTL' = 'LTR';
+
+	const saveSettings = async (updated) => {
+		console.log(updated);
+		await settings.set({ ...$settings, ...updated });
+		await models.set(await getModels());
+		await updateUserSettings(localStorage.token, { ui: $settings });
+	};
+	const getModels = async () => {
+		return await _getModels(localStorage.token);
+	};
 
 	export let initNewChat: Function;
 	export let title: string = $WEBUI_NAME;
@@ -39,6 +53,17 @@
 
 	let showShareChatModal = false;
 	let showDownloadChatModal = false;
+
+	const toggleChangeChatDirection = async () => {
+		chatDirection = chatDirection === 'LTR' ? 'RTL' : 'LTR';
+		saveSettings({ chatDirection });
+	};
+
+	import { onMount } from 'svelte';
+
+	onMount(async () => {
+		chatDirection = $settings.chatDirection ?? 'LTR';
+	});
 </script>
 
 <ShareChatModal bind:show={showShareChatModal} chatId={$chatId} />
@@ -82,6 +107,22 @@
 			<div class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
 				<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
 				{#if shareEnabled && chat && (chat.id || $temporaryChatEnabled)}
+					<div>
+						<div class=" py-0.5 flex w-full justify-between">
+							<button
+								class="p-1 px-3 text-xs flex rounded transition"
+								on:click={toggleChangeChatDirection}
+								type="button"
+							>
+								{#if chatDirection === 'LTR'}
+									<span class="ml-2 self-center">{$i18n.t('LTR')}</span>
+								{:else}
+									<span class="ml-2 self-center">{$i18n.t('RTL')}</span>
+								{/if}
+							</button>
+						</div>
+					</div>
+
 					<Menu
 						{chat}
 						{shareEnabled}
